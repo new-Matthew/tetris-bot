@@ -8,6 +8,7 @@ from mousekey import MouseKey
 import cv2
 import os
 import keyboard
+import time
 
 ativo = False
 
@@ -30,7 +31,7 @@ file_path = os.path.join(dir_path, 'imgresult.png')
 green = 42, 127, 25
 light_blue = 44,156,251
 dark_blue = 34,62,141
-cpus=5
+cpus=8
 min_height = 500
 max_height = 700
 min_width = 850
@@ -48,6 +49,7 @@ with ScreenshotOfOneMonitor(
     while True:
         if ativo:
             co+=1
+            time.sleep(0.1)
             print(co, end='\r')
 
             pic = screenshots_monitor.screenshot_one_monitor()
@@ -73,4 +75,4 @@ with ScreenshotOfOneMonitor(
                 mkey.left_click_xy(x, y)
                 #mkey.move_to_natural(x,y)
 
-# cv2.imwrite(file_path, pic)
+cv2.imwrite(file_path, pic)
